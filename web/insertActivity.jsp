@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ include file="index.html" %>
+<%@ include file="header.jsp" %>
 <style>
   #choix{
     width:900px;

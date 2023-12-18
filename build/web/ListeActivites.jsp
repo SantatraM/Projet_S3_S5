@@ -6,7 +6,7 @@
 
 <%@page import="classes.ActiviteBouquet"%>
 <%@page import="java.util.Vector"%>
-<%@ include file="index.html" %>
+<%@ include file="header.jsp" %>
 <div class="content-wrapper" style="margin-left: 22%; width: 65%">
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Listes </span> Activites</h4>

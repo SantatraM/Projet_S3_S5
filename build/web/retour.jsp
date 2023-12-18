@@ -16,7 +16,7 @@
         color:red;
     }
 </style>
-<%@ include file="index.html" %>
+<%@ include file="header.jsp" %>
 <div class="row" id="erreur">
     <div class="col-12">
         <div class="card mb-4">

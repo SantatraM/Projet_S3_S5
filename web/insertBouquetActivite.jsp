@@ -5,7 +5,7 @@
 --%>
 <%@page import="java.util.Vector"%>
 <%@ page import="classes.*"%>
-<%@ include file="index.html" %>
+<%@ include file="header.jsp" %>
 
 <style>
   #choix{
