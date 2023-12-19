@@ -23,7 +23,7 @@
                         <h5 class="mb-0">Insertion d'activites d'un bouquet</h5>
                     </div>
                     <div class="card-body">
-                        <form action="BouquetActiviteServelet" method="post">
+                        <form action="BouquetActiviteServelet" method="post" data-parsley-validate="">
                             <div class="mb-3">
                                 <label for="defaultSelect" class="form-label">Bouquet</label>
                                 <select id="defaultSelect" class="form-select" name="bouquet">
@@ -43,7 +43,7 @@
                                     for (Activite activite : listesActivite) {
                                 %>
                                 <p>
-                                    <input class="form-check-input" type="checkbox" value="<%= activite.getIdActivite() %>" id="defaultCheck1" name="activite" />
+                                    <input class="form-check-input" type="checkbox" value="<%= activite.getIdActivite() %>" id="defaultCheck1" name="activite" required=""/>
                                     <label class="form-check-label" for="defaultCheck1"><%= activite.getNomActivite() %> </label></p>
                                 <% } %>
                             </div>

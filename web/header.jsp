@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="css/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <link rel="stylesheet" href="css/assets/vendor/libs/apex-charts/apex-charts.css" />
-
+    <link rel="stylesheet" href="css/assets/css/parsley.css" />
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -216,6 +216,8 @@
 
     <!-- Page JS -->
     <script src="css/assets/js/dashboards-analytics.js"></script>
+    <script src="css/assets/js/jquery.js"> </script>
+    <script src="css/assets/js/parsley.js"> </script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
