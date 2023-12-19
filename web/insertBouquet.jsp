@@ -27,7 +27,7 @@
                             <div class="mb-3" id="form">
                                 <label for="exampleFormControlSelect1" class="form-label">Entrez un bouquet</label>
                                 <div class="col-md-10">
-                                    <input class="form-control" type="text"  id="html5-date-input" name="bouquet1" />
+                                    <input class="form-control" type="text"  id="html5-date-input" name="bouquet1" required/>
                                 </div>
                                 <div class="navbar-nav align-items-center">
                                     <div class="nav-item d-flex align-items-center">
@@ -57,7 +57,7 @@
         var nombreArticle=parseInt(numero)+1;
         var conteneurForm= document.getElementById("form");
         var div=document.createElement("div");
-        var nouveau = '<div class="col-md-10"><input class="form-control" type="text"  id="html5-date-input" name=bouquet'+nombreArticle+' /></div><div class="navbar-nav align-items-center"> <div class="nav-item d-flex align-items-center"><span id="plus"><label for="exampleFormControlSelect1" class="form-label"><button type="button" onclick="nombreArticle=autreBouquet()">+</button></label></span> </div></div>';
+        var nouveau = '<div class="col-md-10"><input class="form-control" type="text"  id="html5-date-input" name=bouquet'+nombreArticle+' required/></div><div class="navbar-nav align-items-center"> <div class="nav-item d-flex align-items-center"><span id="plus"><label for="exampleFormControlSelect1" class="form-label"><button type="button" onclick="nombreArticle=autreBouquet()">+</button></label></span> </div></div>';
         div.innerHTML = nouveau;
         conteneurForm.appendChild(div);
         localStorage.setItem('Bouquet',nombreArticle)

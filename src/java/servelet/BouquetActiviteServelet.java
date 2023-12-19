@@ -22,6 +22,8 @@ public class BouquetActiviteServelet extends HttpServlet {
         for(String activite : idActivite) {
             activites.insertActiviteBouquet(null, idBouquet, activite);
         }
+        RequestDispatcher dispat =  request.getRequestDispatcher("index.jsp");
+        dispat.forward(request, response);
     }
 
     @Override
