@@ -17,11 +17,22 @@ import java.util.Vector;
  */
 public class ActiviteBouquet {
     String idActiviteBouquet;
+    String idBouqet;
+    String idActivite;
     String Bouquet;
     String Activite;
 
     public ActiviteBouquet() {
     }
+
+    public ActiviteBouquet(String idActiviteBouquet, String idActivite, String idBouquet, String Bouquet, String Activite) {
+        this.idActiviteBouquet = idActiviteBouquet;
+        this.idBouqet = idBouqet;
+        this.idActivite = idActivite;
+        this.Bouquet = Bouquet;
+        this.Activite = Activite;
+    }
+    
 
     public ActiviteBouquet(String idActiviteBouquet, String Bouquet, String Activite) {
         this.idActiviteBouquet = idActiviteBouquet;
@@ -33,23 +44,16 @@ public class ActiviteBouquet {
     
     public void insertActiviteBouquet(Connection con,String idbouquet,String idActivite){
         int estOuvert = 0;
-
         try {
             if (con == null) {
                 Connexion c = new Connexion();
                 con = c.getConnection();
                 estOuvert = 1;
             }
-
             String sql = "INSERT INTO bouquetActivite(idbouquet,idactivite) VALUES('"+idbouquet+"','"+idActivite+"')";
-
             Statement prs = con.createStatement();
-
             prs.executeUpdate(sql);
-
-
         } catch (Exception e) {
-            
         } finally{
             try {
                 if (estOuvert == 1) {
@@ -87,6 +91,33 @@ public class ActiviteBouquet {
         }
         return listBouquet;
     }
+    
+    public Vector<ActiviteBouquet> getAllActivitesBouquet(Connection con,String Bouquet){
+        int estOuvert = 0;
+        Vector<ActiviteBouquet> listBouquet = new Vector<ActiviteBouquet>();
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            String sql = "SELECT * FROM v_bouquetActivite where idbouquet='"+Bouquet+"'";
+            Statement prs = con.createStatement();
+            ResultSet resultSet = prs.executeQuery(sql);
+            while(resultSet.next()){
+                listBouquet.add(new ActiviteBouquet(resultSet.getString("idbouquetactivite"),resultSet.getString("idactivite"),resultSet.getString("idbouquet"),resultSet.getString("nombouquet"), resultSet.getString("nomactivite")));
+            }   
+        } catch (Exception e) {
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+        return listBouquet;
+    }
 
     public String getIdActiviteBouquet() {
         return idActiviteBouquet;
@@ -110,6 +141,22 @@ public class ActiviteBouquet {
 
     public void setActivite(String Activite) {
         this.Activite = Activite;
+    }
+
+    public String getIdBouqet() {
+        return idBouqet;
+    }
+
+    public void setIdBouqet(String idBouqet) {
+        this.idBouqet = idBouqet;
+    }
+
+    public String getIdActivite() {
+        return idActivite;
+    }
+
+    public void setIdActivite(String idActivite) {
+        this.idActivite = idActivite;
     }
 
     

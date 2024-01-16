@@ -142,6 +142,24 @@
                     <div data-i18n="Basic">Insertion activite</div>
                   </a>
                 </li>
+                
+                <li class="menu-item">
+                    <a href="TarifActiviteServelet" class="menu-link">
+                        <div data-il8n="Basic">Insertion tarif d'un activite</div>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="stockActivite" class="menu-link">
+                        <div data-il8n="Basic">Insertion Stock  activite</div>
+                    </a>
+                </li>
+                
+                <li class="menu-item">
+                    <a href="ActiviteServelet" class="menu-link">
+                        <div data-il8n="Basic">Liste Activites</div>
+                    </a>
+                </li>
               </ul>
             </li>
             <li class="menu-item">
@@ -188,6 +206,45 @@
                 </li>
               </ul>
             </li>
+            
+             <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Durée</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="insertDuree.jsp" class="menu-link">
+                    <div data-i18n="Basic">Insertion Durée</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Voyage</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="VoyageServelet" class="menu-link">
+                    <div data-i18n="Basic">Insertion formule voyage</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="RechercheVoyageServelet" class="menu-link">
+                    <div data-i18n="Basic">Listes Voyages</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="rechercheVoyageParTarif.jsp" class="menu-link">
+                    <div data-i18n="Basic">Recherche Voyages par tarif</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
           </ul>
         </aside>
         <!-- / Menu -->

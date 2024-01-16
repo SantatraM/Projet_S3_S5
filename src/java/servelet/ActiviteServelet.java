@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import classes.Activite;
+import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 
 public class ActiviteServelet extends HttpServlet {
@@ -25,5 +26,13 @@ public class ActiviteServelet extends HttpServlet {
         RequestDispatcher dispat =  request.getRequestDispatcher("insertActivity.jsp");
         dispat.forward(request, response);
     }
-
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        Activite activite = new Activite();
+        Vector<Activite> listeActivites = activite.getActiviteAndReste(null);
+        request.setAttribute("listeActivites", listeActivites);
+        RequestDispatcher dispat =  request.getRequestDispatcher("Activites.jsp");
+        dispat.forward(request, response);
+    }
 }

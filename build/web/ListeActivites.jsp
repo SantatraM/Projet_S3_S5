@@ -9,7 +9,7 @@
 <%@ include file="header.jsp" %>
 <div class="content-wrapper" style="margin-left: 22%; width: 65%">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Listes </span> Activites</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Listes des</span> Activites</h4>
         <div class="card">
             <h5 class="card-header">Pour le Bouquet : <%= request.getAttribute("bouquet") %></h5>
             <div class="text-nowrap">

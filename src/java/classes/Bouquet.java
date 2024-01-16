@@ -58,8 +58,7 @@ public class Bouquet {
             while(resultSet.next()){
                 listBouquet.add(new Bouquet(resultSet.getString("idbouquet"),resultSet.getString("nombouquet")));
             }
-        } catch (Exception e) {
-            
+        } catch (Exception e) {            
         } finally{
             try {
                 if (estOuvert == 1) {
@@ -74,23 +73,16 @@ public class Bouquet {
 
     public void insertBouquet(Connection con,String nom){
         int estOuvert = 0;
-
         try {
             if (con == null) {
                 Connexion c = new Connexion();
                 con = c.getConnection();
                 estOuvert = 1;
             }
-
             String sql = "INSERT INTO bouquet(nomBouquet) VALUES('"+nom+"')";
-
             Statement prs = con.createStatement();
-
             prs.executeUpdate(sql);
-
-
-        } catch (Exception e) {
-            
+        } catch (Exception e) {           
         } finally{
             try {
                 if (estOuvert == 1) {

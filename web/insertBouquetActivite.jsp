@@ -28,7 +28,7 @@
                                 <label for="defaultSelect" class="form-label">Bouquet</label>
                                 <select id="defaultSelect" class="form-select" name="bouquet">
                                 <%  
-                                    Vector<Bouquet> listesBouquet =(Vector<Bouquet>) request.getAttribute("listeBouquet");
+                                    Vector<Bouquet> listesBouquet =(Vector<Bouquet>) request.getAttribute("listeActivites");
                                     for (Bouquet bouquet : listesBouquet) {
                                 %>
                                     <option value="<%= bouquet.getIdBouquet() %>"><%= bouquet.getNomBouquet() %></option>
@@ -42,9 +42,8 @@
                                     Vector<Activite> listesActivite =(Vector<Activite>) request.getAttribute("listeActivite");
                                     for (Activite activite : listesActivite) {
                                 %>
-                                <p>
                                     <input class="form-check-input" type="checkbox" value="<%= activite.getIdActivite() %>" id="defaultCheck1" name="activite" required=""/>
-                                    <label class="form-check-label" for="defaultCheck1"><%= activite.getNomActivite() %> </label></p>
+                                    <label class="form-check-label" for="defaultCheck1"><%= activite.getNomActivite() %> </label>
                                 <% } %>
                             </div>
                             <button type="submit" class="btn btn-primary">Envoyer</button>

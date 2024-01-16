@@ -20,6 +20,42 @@
         <servlet-name>BouquetActiviteServelet</servlet-name>
         <servlet-class>servelet.BouquetActiviteServelet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DureeServelet</servlet-name>
+        <servlet-class>servelet.DureeServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VoyageServelet</servlet-name>
+        <servlet-class>servelet.VoyageServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>activiteBouquetServelet</servlet-name>
+        <servlet-class>servelet.activiteBouquetServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RechercheVoyageServelet</servlet-name>
+        <servlet-class>servelet.RechercheVoyageServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailVoyageServelet</servlet-name>
+        <servlet-class>servelet.DetailVoyageServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TarifActiviteServelet</servlet-name>
+        <servlet-class>servelet.TarifActiviteServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RechercheVoyageByTarifServelet</servlet-name>
+        <servlet-class>servelet.RechercheVoyageByTarifServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>stockActivite</servlet-name>
+        <servlet-class>servelet.stockActivite</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReservationServelet</servlet-name>
+        <servlet-class>servelet.ReservationServelet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ActiviteServelet</servlet-name>
         <url-pattern>/ActiviteServelet</url-pattern>
@@ -39,6 +75,42 @@
     <servlet-mapping>
         <servlet-name>BouquetActiviteServelet</servlet-name>
         <url-pattern>/BouquetActiviteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DureeServelet</servlet-name>
+        <url-pattern>/DureeServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VoyageServelet</servlet-name>
+        <url-pattern>/VoyageServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>activiteBouquetServelet</servlet-name>
+        <url-pattern>/activiteBouquetServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RechercheVoyageServelet</servlet-name>
+        <url-pattern>/RechercheVoyageServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailVoyageServelet</servlet-name>
+        <url-pattern>/DetailVoyageServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TarifActiviteServelet</servlet-name>
+        <url-pattern>/TarifActiviteServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RechercheVoyageByTarifServelet</servlet-name>
+        <url-pattern>/RechercheVoyageByTarifServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>stockActivite</servlet-name>
+        <url-pattern>/stockActivite</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReservationServelet</servlet-name>
+        <url-pattern>/ReservationServelet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
