@@ -60,7 +60,7 @@ public class posteEmployer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            request.setAttribute("listeEmployer", Employer.getAllEmployer(null));
+            request.setAttribute("listeEmployer", Employer.getAllEmployers(null));
             Asa a = new Asa();
             request.setAttribute("listAsa",a.getAllAsa(null));
             

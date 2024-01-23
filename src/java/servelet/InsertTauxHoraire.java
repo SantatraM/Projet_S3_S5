@@ -80,7 +80,7 @@ public class InsertTauxHoraire extends HttpServlet {
         for (int i = 0; i < list.size(); i++) {
             Employer.insertTauxHoraire(null,list.get(i).getId() ,txh);
             
-            txh = txh * 2;
+            txh = txh + 1 ;
         }
     }
 

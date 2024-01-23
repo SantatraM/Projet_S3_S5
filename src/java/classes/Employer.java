@@ -237,4 +237,34 @@ public class Employer {
         }
         return listEmployer;
     }
+        
+        public static  Vector<Employer> getAllEmployers(Connection con){
+        int estOuvert = 0;
+        Vector<Employer> listEmployer = new Vector<Employer>();
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            String sql = "SELECT * FROM employe";
+            Statement prs = con.createStatement();
+            ResultSet resultSet = prs.executeQuery(sql);                 
+            while(resultSet.next()){
+                listEmployer.add(new Employer(resultSet.getString("idemploye"),resultSet.getString("nom")
+                        ,resultSet.getString("prenom"),resultSet.getString("mail"),resultSet.getString("adresse")
+                        ,resultSet.getDate("dateEmbauche")));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+        return listEmployer;
+    }
 }
