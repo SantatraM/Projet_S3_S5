@@ -5,7 +5,8 @@
  */
 package servelet;
 
-import classes.Voyage;
+import classes.Asa;
+import classes.Employer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hp
  */
-public class RechercheVoyageByTarifServelet extends HttpServlet {
+public class posteEmployer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RechercheVoyageByTarifServelet</title>");            
+            out.println("<title>Servlet posteEmployer</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RechercheVoyageByTarifServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet posteEmployer at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,12 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            request.setAttribute("listeEmployer", Employer.getAllEmployer(null));
+            Asa a = new Asa();
+            request.setAttribute("listAsa",a.getAllAsa(null));
+            
+            RequestDispatcher dispat =  request.getRequestDispatcher("insertPosteEmployer.jsp");
+        dispat.forward(request, response);
     }
 
     /**
@@ -73,20 +79,13 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tarif1 = request.getParameter("tarif1");
-        String tarif2 = request.getParameter("tarif2");
-        float t1 = Float.valueOf(tarif1);
-        float t2 = Float.valueOf(tarif2);
-        try{
-            Voyage v = new Voyage();
-            Vector<Voyage> voyages = v.getVoyageEntre2Tarif(null, t1, t2);
-            request.setAttribute("listevoyages", voyages);
-            RequestDispatcher dispat =  request.getRequestDispatcher("listeVoyageParTarif.jsp");
-            dispat.forward(request, response);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        
+            String idEmploye = request.getParameter("employe");
+            String idAsa = request.getParameter("asa");
+            
+            Employer.insertPoste(null, idEmploye, idAsa);
+            
+                    RequestDispatcher dispat =  request.getRequestDispatcher("index.jsp");
+        dispat.forward(request, response);
     }
 
     /**

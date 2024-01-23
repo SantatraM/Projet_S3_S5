@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hp
  */
-public class RechercheVoyageByTarifServelet extends HttpServlet {
+public class PrixVenteVoyage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RechercheVoyageByTarifServelet</title>");            
+            out.println("<title>Servlet PrixVenteVoyage</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RechercheVoyageByTarifServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PrixVenteVoyage at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +59,11 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Voyage v = new Voyage();
+        Vector<Voyage> listeVoyage = v.getAllVoyage(null);
+        request.setAttribute("listesVoyages", listeVoyage);
+        RequestDispatcher dispat =  request.getRequestDispatcher("InsertPrixVente.jsp");
+        dispat.forward(request, response);
     }
 
     /**
@@ -73,20 +77,16 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tarif1 = request.getParameter("tarif1");
-        String tarif2 = request.getParameter("tarif2");
-        float t1 = Float.valueOf(tarif1);
-        float t2 = Float.valueOf(tarif2);
-        try{
-            Voyage v = new Voyage();
-            Vector<Voyage> voyages = v.getVoyageEntre2Tarif(null, t1, t2);
-            request.setAttribute("listevoyages", voyages);
-            RequestDispatcher dispat =  request.getRequestDispatcher("listeVoyageParTarif.jsp");
-            dispat.forward(request, response);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+            String idVoyage = request.getParameter("voyage");
         
+            String prixVenteString = request.getParameter("prixVente");
+            float prixVente = Float.valueOf(prixVenteString);
+            
+            Voyage v = new Voyage();
+            v.insertVoyagePix(null, idVoyage, prixVente);
+            
+            RequestDispatcher dispat =  request.getRequestDispatcher("index.jsp");
+            dispat.forward(request, response);
     }
 
     /**

@@ -81,4 +81,70 @@ CREATE TABLE sortie(
     dateSortie date default current_date
 );
 
+create sequence seqVoyagePrix;
+CREATE TABLE voyagePrix(
+    idVoyagePrix varchar(20) default concat('VPV' || nextval('seqVoyagePrix')) primary key,
+    idVoyage varchar(20) references formuleVoyage(idVoyage),
+    prixVente float
+);
 
+create sequence seqGuideVoyage;
+CREATE TABLE guideVoyage(
+    idGuideVoyage varchar(20) default concat('GV' || nextval('seqGuideVoyage')) primary key,
+    idAsa varchar(20) references asa(idAsa),
+    idDuree varchar(20) references duree(idDuree),
+    nbPersonne int
+);
+
+
+create sequence seqVolumeHoraire;
+CREATE TABLE volumeHoraire(
+    idVolumeHoraire varchar(20) default concat('VH' || nextval('seqGuideVoyage')) primary key,
+    idBouquet varchar(20) references bouquet(idBouquet),
+    duree int
+); 
+
+create sequence seqAsa;
+CREATE TABLE asa(
+    idAsa varchar(20) default concat('ASA' || nextval('seqAsa')) primary key,
+    libelle varchar(20),
+    salaire int
+);
+
+create sequence seqEmploye;
+CREATE TABLE employe(
+    idEmploye VARCHAR(20) default concat('EMP' || nextval('seqEmploye')) primary key,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    mail VARCHAR(100),
+    adresse VARCHAR(50),
+    dateEmbauche DATE
+);
+
+create sequence seqEmployePost;
+CREATE TABLE employePost(
+    idEmployePost VARCHAR(20) default concat('POST' || nextval('seqEmployePost')) primary key,
+    idEmploye VARCHAR(20) REFERENCES employe(idEmploye),
+    idAsa VARCHAR(20) REFERENCES asa(idAsa)
+);
+
+create sequence seqProfile;
+CREATE TABLE profile(
+    idProfile VARCHAR(20) default concat('PRO' || nextval('seqProfile')) primary key,
+    libelle VARCHAR(30) 
+);
+
+create sequence seqProfileParAnnee;
+CREATE TABLE profileParAnnee(
+    idProfilParAnnee VARCHAR(20) default concat('APRO' || nextval('seqProfileParAnnee')) primary key,
+    min int, 
+    max int,
+    idProfile VARCHAR(20) REFERENCES profile(idProfile)
+);
+
+create sequence seqTauxHoraireProfile;
+CREATE TABLE tauxHoraireProfile(
+    idTauxHoraireProfile VARCHAR(20) default concat('THP' || nextval('seqTauxHoraireProfile')) primary key,
+    idProfile VARCHAR(20) REFERENCES profile(idProfile),
+    tauxHoraire FLOAT
+);

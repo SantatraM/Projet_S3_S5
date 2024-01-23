@@ -123,4 +123,27 @@ public class Bouquet {
         return listBouquet;
     }
 
+        public void insertVolumeHoraire(Connection con, String idBouquet, int duree){
+        int estOuvert = 0;
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            String sql = "INSERT INTO volumeHoraire(idBouquet,duree) VALUES('"+idBouquet+"',"+duree+")";
+            System.out.println(sql);
+            Statement prs = con.createStatement();
+            prs.executeUpdate(sql);
+        } catch (Exception e) {           
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+    }
 }

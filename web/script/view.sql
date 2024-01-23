@@ -56,3 +56,61 @@ create or replace view v_etatStockActivite as
         vs.sum as totalSortie , coalesce(ve.sum - vs.sum , ve.sum) as reste
         from v_entree ve
         left join v_sortie vs on vs.idActivite =  ve.idActivite;
+
+
+create or replace view v_GuideVoyage as
+    select gv.* , d.nomduree , a.libelle , a.salaire
+        from GuideVoyage gv
+        join Duree d on d.idduree = gv.idduree
+        join Asa a on a.idAsa = gv.idAsa;
+
+create or replace view v_volumeHoraire as
+    select vh.* , b.nombouquet
+        from volumeHoraire vh 
+        join bouquet b on b.idbouquet = vh.idbouquet;
+
+create or replace view v_GuideHoraireVoyage as
+    select v.idvoyage , vg.* , vh.* 
+        FROM v_voyage v
+        join v_guidevoyage vg on vg.idduree = v.idduree
+        join v_volumehoraire vh on  vh.idbouquet = v.idbouquet;
+
+create or replace view v_totalHoraireGuideVoyage as
+    select  idvoyage,idbouquet,nombouquet,idduree,nomduree,nbpersonne,(nbpersonne * duree) as totalHeureGuide ,
+    salaire * (nbpersonne * duree) as salaireTotal
+        from v_GuideHoraireVoyage
+        group by idvoyage,idbouquet,nombouquet,idduree,nomduree,nbpersonne,duree,salaire;
+
+create or replace view v_prixDeRevient as
+    select th.idvoyage , (vt.tarif + th.salaireTotal) as prixderevient
+        from v_totalHoraireGuideVoyage th
+        join v_tariftotalvoyage vt on vt.idvoyage = th.idvoyage;
+
+create or replace view v_benefice as
+    select pv.idvoyage , (pv.prixVente - vp.prixderevient) as benefice
+        from voyagePrix pv 
+        join v_prixDeRevient vp on vp.idvoyage = pv.idvoyage;
+
+reate or replace view v_employePoste as 
+    SELECT e.* , asa.* , (extract(year from current_date) - extract(year from e.dateEmbauche)) as anneeDeTravail
+    from employePost ep 
+    join employe e on e.idEmploye = ep.idEmploye 
+    join asa on asa.idAsa = ep.idAsa ;
+
+CREATE OR REPLACE VIEW v_employeProfile AS
+    SELECT 
+        v.*,
+        ppa.idProfile,
+        p.libelle as profile,
+        ppa.min,
+        ppa.max
+    FROM 
+        v_employePoste v
+        LEFT JOIN profileParAnnee ppa ON v.anneeDeTravail BETWEEN ppa.min AND ppa.max
+        join profile p on p.idprofile = ppa.idprofile;
+
+
+create or REPLACE view v_tauxHoraireProfile AS
+    SELECT ep.* , t.tauxHoraire 
+    FROM v_employeProfile ep 
+    join tauxHoraireProfile t on t.idProfile = ep.idProfile;

@@ -56,6 +56,46 @@
         <servlet-name>ReservationServelet</servlet-name>
         <servlet-class>servelet.ReservationServelet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PrixVenteVoyage</servlet-name>
+        <servlet-class>servelet.PrixVenteVoyage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Guide</servlet-name>
+        <servlet-class>servelet.Guide</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VolumeHoraire</servlet-name>
+        <servlet-class>servelet.VolumeHoraire</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AsaServelet</servlet-name>
+        <servlet-class>servelet.AsaServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RechercheVoyageByBeneficeServelet</servlet-name>
+        <servlet-class>servelet.RechercheVoyageByBeneficeServelet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertEmployer</servlet-name>
+        <servlet-class>servelet.InsertEmployer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>posteEmployer</servlet-name>
+        <servlet-class>servelet.posteEmployer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertProfil</servlet-name>
+        <servlet-class>servelet.InsertProfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertTauxHoraire</servlet-name>
+        <servlet-class>servelet.InsertTauxHoraire</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EmployeServelet</servlet-name>
+        <servlet-class>servelet.EmployeServelet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ActiviteServelet</servlet-name>
         <url-pattern>/ActiviteServelet</url-pattern>
@@ -111,6 +151,46 @@
     <servlet-mapping>
         <servlet-name>ReservationServelet</servlet-name>
         <url-pattern>/ReservationServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrixVenteVoyage</servlet-name>
+        <url-pattern>/PrixVenteVoyage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Guide</servlet-name>
+        <url-pattern>/Guide</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VolumeHoraire</servlet-name>
+        <url-pattern>/VolumeHoraire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AsaServelet</servlet-name>
+        <url-pattern>/AsaServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RechercheVoyageByBeneficeServelet</servlet-name>
+        <url-pattern>/RechercheVoyageByBeneficeServelet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertEmployer</servlet-name>
+        <url-pattern>/InsertEmployer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>posteEmployer</servlet-name>
+        <url-pattern>/posteEmployer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertProfil</servlet-name>
+        <url-pattern>/InsertProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertTauxHoraire</servlet-name>
+        <url-pattern>/InsertTauxHoraire</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmployeServelet</servlet-name>
+        <url-pattern>/EmployeServelet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

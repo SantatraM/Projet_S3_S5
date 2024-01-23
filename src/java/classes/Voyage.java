@@ -25,7 +25,7 @@ public class Voyage {
     int nbJour;
     int nbactivite;
     float tarifVoyage;
-        
+    float benefice;
     public Voyage() {
     }
 
@@ -338,6 +338,102 @@ public class Voyage {
         }
         this.tarifVoyage = Float.valueOf(tarifVoyage);
     }
+
+    public float getBenefice() {
+        return benefice;
+    }
+
+    public void setBenefice(float benefice) {
+        this.benefice = benefice;
+    }
+
+    public Voyage(String idVoyage, float benefice) {
+        this.idVoyage = idVoyage;
+        this.benefice = benefice;
+    }
     
+    public Vector<Voyage> getBenefice(Connection con) throws Exception {
+        int estOuvert = 0;
+        Vector<Voyage> listeVoyage = new Vector<Voyage>();
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            
+            String sql = "SELECT * FROM v_benefice ";
+            System.out.println(sql);
+            System.out.println(sql);
+            Statement prs = con.createStatement();
+            ResultSet resultSet = prs.executeQuery(sql);                 
+            while(resultSet.next()){
+                listeVoyage.add(new Voyage(resultSet.getString("idvoyage"), resultSet.getFloat("benefice")));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+        return listeVoyage;
+    }
     
+    public Vector<Voyage> getBeneficeIntervalle(Connection con,float benefice1,float benefice2) throws Exception {
+        int estOuvert = 0;
+        Vector<Voyage> listeVoyage = new Vector<Voyage>();
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            
+            String sql = "SELECT * FROM v_benefice where benefice between "+benefice1+" and "+benefice2;
+            System.out.println(sql);
+            Statement prs = con.createStatement();
+            ResultSet resultSet = prs.executeQuery(sql);                 
+            while(resultSet.next()){
+                listeVoyage.add(new Voyage(resultSet.getString("idvoyage"), resultSet.getFloat("benefice")));
+            }
+        } catch (Exception e) {
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+        return listeVoyage;
+    }
+    
+    public void insertVoyagePix(Connection con, String idVoyage, float prixVente){
+        int estOuvert = 0;
+        try {
+            if (con == null) {
+                Connexion c = new Connexion();
+                con = c.getConnection();
+                estOuvert = 1;
+            }
+            String sql = "INSERT INTO voyagePrix(idvoyage,prixvente) VALUES('"+idVoyage+"',"+prixVente+")";
+            System.out.println(sql);
+            Statement prs = con.createStatement();
+            prs.executeUpdate(sql);
+        } catch (Exception e) {           
+        } finally{
+            try {
+                if (estOuvert == 1) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        }
+    }
 }

@@ -5,7 +5,8 @@
  */
 package servelet;
 
-import classes.Voyage;
+import classes.Asa;
+import classes.Bouquet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hp
  */
-public class RechercheVoyageByTarifServelet extends HttpServlet {
+public class VolumeHoraire extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RechercheVoyageByTarifServelet</title>");            
+            out.println("<title>Servlet VolumeHoraire</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RechercheVoyageByTarifServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet VolumeHoraire at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,15 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        Bouquet b = new Bouquet();
+        Vector<Bouquet> listebouquets = b.getAllBouquet(null);
+        request.setAttribute("listesBouquets", listebouquets);
+        
+        Asa asa = new Asa();
+        Vector<Asa> listesAsa = asa.getAllAsa(null);
+        request.setAttribute("listesAsa", listesAsa);
+        RequestDispatcher dispat =  request.getRequestDispatcher("InsertDureeHoraire.jsp");
+        dispat.forward(request, response);
     }
 
     /**
@@ -73,20 +82,18 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String tarif1 = request.getParameter("tarif1");
-        String tarif2 = request.getParameter("tarif2");
-        float t1 = Float.valueOf(tarif1);
-        float t2 = Float.valueOf(tarif2);
-        try{
-            Voyage v = new Voyage();
-            Vector<Voyage> voyages = v.getVoyageEntre2Tarif(null, t1, t2);
-            request.setAttribute("listevoyages", voyages);
-            RequestDispatcher dispat =  request.getRequestDispatcher("listeVoyageParTarif.jsp");
-            dispat.forward(request, response);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+                    String bouquet = request.getParameter("bouquet");
         
+            String volumeHoraireString = request.getParameter("volumeHoraire");
+            int volumeHoraire = Integer.valueOf(volumeHoraireString);
+            
+            
+            Bouquet b = new Bouquet();
+            b.insertVolumeHoraire(null, bouquet, volumeHoraire);
+            
+            
+            RequestDispatcher dispat =  request.getRequestDispatcher("index.jsp");
+            dispat.forward(request, response);
     }
 
     /**

@@ -173,6 +173,11 @@
                     <div data-i18n="Basic">Insertion Bouquet</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="VolumeHoraire" class="menu-link">
+                    <div data-i18n="Basic">Insertion Volume horaire par bouquet</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="menu-item">
@@ -218,6 +223,12 @@
                     <div data-i18n="Basic">Insertion Durée</div>
                   </a>
                 </li>
+                
+                <li class="menu-item">
+                  <a href="Guide" class="menu-link">
+                    <div data-i18n="Basic">Insertion nombre de guide pour une Durée</div>
+                  </a>
+                </li>
               </ul>
             </li>
             
@@ -233,6 +244,11 @@
                   </a>
                 </li>
                 <li class="menu-item">
+                  <a href="PrixVenteVoyage" class="menu-link">
+                    <div data-i18n="Basic">Insertion Prix de vente</div>
+                  </a>
+                </li>
+                <li class="menu-item">
                   <a href="RechercheVoyageServelet" class="menu-link">
                     <div data-i18n="Basic">Listes Voyages</div>
                   </a>
@@ -242,9 +258,62 @@
                     <div data-i18n="Basic">Recherche Voyages par tarif</div>
                   </a>
                 </li>
+                
+                <li class="menu-item">
+                  <a href="rechercheVoyageParBenefice.jsp" class="menu-link">
+                    <div data-i18n="Basic">Recherche Voyages par benefice</div>
+                  </a>
+                </li>
               </ul>
             </li>
             
+             <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Asa</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="insertAsa.jsp" class="menu-link">
+                    <div data-i18n="Basic">Insertion Asa</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-lock-open-alt"></i> -->
+                <div data-i18n="Authentications">Employer</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="insertEmployer.jsp" class="menu-link">
+                    <div data-i18n="Basic">Insertion Employer</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="insertProfil.jsp" class="menu-link">
+                    <div data-i18n="Basic">Insertion Profil</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="posteEmployer" class="menu-link">
+                    <div data-i18n="Basic">Insertion poste employer</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="insertTauxHoraire.jsp" class="menu-link">
+                    <div data-i18n="Basic">Insertion taux horaire poste</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="EmployeServelet" class="menu-link">
+                    <div data-i18n="Basic">Liste employer</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->

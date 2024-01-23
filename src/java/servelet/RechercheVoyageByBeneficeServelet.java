@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author hp
  */
-public class RechercheVoyageByTarifServelet extends HttpServlet {
+public class RechercheVoyageByBeneficeServelet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RechercheVoyageByTarifServelet</title>");            
+            out.println("<title>Servlet RechercheVoyageByBeneficeServelet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RechercheVoyageByTarifServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet RechercheVoyageByBeneficeServelet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -79,13 +79,11 @@ public class RechercheVoyageByTarifServelet extends HttpServlet {
         float t2 = Float.valueOf(tarif2);
         try{
             Voyage v = new Voyage();
-            Vector<Voyage> voyages = v.getVoyageEntre2Tarif(null, t1, t2);
+            Vector<Voyage> voyages = v.getBeneficeIntervalle(null, t1, t2);
             request.setAttribute("listevoyages", voyages);
-            RequestDispatcher dispat =  request.getRequestDispatcher("listeVoyageParTarif.jsp");
+            RequestDispatcher dispat =  request.getRequestDispatcher("listeVoyageParBenefice.jsp");
             dispat.forward(request, response);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        }catch(Exception e){}
         
     }
 

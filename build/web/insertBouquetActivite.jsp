@@ -28,7 +28,7 @@
                                 <label for="defaultSelect" class="form-label">Bouquet</label>
                                 <select id="defaultSelect" class="form-select" name="bouquet">
                                 <%  
-                                    Vector<Bouquet> listesBouquet =(Vector<Bouquet>) request.getAttribute("listeActivites");
+                                    Vector<Bouquet> listesBouquet =(Vector<Bouquet>) request.getAttribute("listeBouquet");
                                     for (Bouquet bouquet : listesBouquet) {
                                 %>
                                     <option value="<%= bouquet.getIdBouquet() %>"><%= bouquet.getNomBouquet() %></option>
